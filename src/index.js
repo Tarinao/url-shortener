@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const { nanoid } = require('nanoid');
 const redis = require('./redis');
 
@@ -33,6 +34,8 @@ app.get('/r/:code', async (req, res) => {
 app.get('/health', (req, res) => {
   return res.status(200).json({ status: 'ok' });
 });
+
+app.use('/ui', express.static(path.join(__dirname, '../www')));
 
 if (require.main === module) {
   app.listen(PORT, () => {
