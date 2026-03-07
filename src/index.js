@@ -33,6 +33,14 @@ app.get('/r/:code', async (req, res) => {
   return res.redirect(302, url);
 });
 
+app.delete('/r/:code', async (req, res) => {
+  const deleted = await redis.del(req.params.code);
+  if (!deleted) {
+    return res.status(404).json({ error: 'Not found' });
+  }
+  return res.status(200).json({ deleted: req.params.code });
+});
+
 app.get('/health', (req, res) => {
   return res.status(200).json({ status: 'ok' });
 });

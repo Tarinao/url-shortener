@@ -16,6 +16,10 @@ const redis = {
   async get(code) {
     return client.get(code);
   },
+
+  async del(code) {
+    return client.del(code);
+  },
 };
 
 module.exports = redis;

@@ -500,13 +500,30 @@
     document.getElementById('delete-modal').classList.add('active');
   }
 
-  function confirmDelete() {
+  async function confirmDelete() {
     if (!pendingDeleteCode) return;
-    urls = urls.filter(u => u.code !== pendingDeleteCode);
-    save();
-    toast(`/${pendingDeleteCode} removed`, 'success');
+    const code = pendingDeleteCode;
     pendingDeleteCode = null;
     closeModal();
+
+    try {
+      const r = await fetch(`${apiBase()}/r/${code}`, {
+        method: 'DELETE',
+        signal: AbortSignal.timeout(5000),
+      });
+      if (!r.ok && r.status !== 404) {
+        const data = await r.json().catch(() => ({}));
+        toast(data.error || `Error ${r.status}`, 'error');
+        return;
+      }
+    } catch {
+      toast('Could not reach API', 'error');
+      return;
+    }
+
+    urls = urls.filter(u => u.code !== code);
+    save();
+    toast(`/${code} deleted`, 'success');
   }
 
   // ─── Modal ───────────────────────────────────────────────────────────────
