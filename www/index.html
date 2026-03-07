@@ -25,13 +25,6 @@
 
 <main>
 
-  <!-- API Config -->
-  <div class="config-bar">
-    <label>API Base URL</label>
-    <input type="text" id="api-base" value="" placeholder="http://localhost:3000" />
-    <button class="btn btn-ghost" onclick="checkHealth()">Test</button>
-  </div>
-
   <!-- Create Form -->
   <div class="card">
     <div class="card-title">Create Short URL</div>
@@ -39,10 +32,6 @@
       <div class="form-group" style="flex:2">
         <label for="input-url">Destination URL</label>
         <input type="url" id="input-url" placeholder="https://example.com/very/long/path" />
-      </div>
-      <div class="form-group">
-        <label for="input-code">Custom Code <span style="font-weight:400">(optional)</span></label>
-        <input type="text" id="input-code" placeholder="my-link" maxlength="32" />
       </div>
       <div class="form-actions">
         <button class="btn btn-primary" id="btn-create" onclick="createURL()">
@@ -60,10 +49,8 @@
       <table id="url-table">
         <thead>
           <tr>
-            <th></th>
             <th>Destination URL</th>
             <th>Short Link</th>
-            <th style="text-align:right">Clicks</th>
             <th>Created</th>
             <th style="text-align:right">Actions</th>
           </tr>

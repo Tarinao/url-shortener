@@ -105,8 +105,6 @@ input:disabled { opacity: .5; cursor: not-allowed; }
 }
 .btn-icon:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
 .btn-icon.danger:hover { border-color: var(--danger); color: var(--danger); background: var(--danger-dim); }
-.btn-icon.toggle-btn.enabled { color: #22c55e; }
-.btn-icon.toggle-btn.disabled { color: var(--muted); }
 .btn-sm { height: 32px; padding: 0 12px; font-size: .8rem; }
 .btn:disabled { opacity: .45; cursor: not-allowed; }
 
@@ -174,14 +172,5 @@ tr:hover td { background: var(--surface2); }
 @keyframes slideIn { from { transform: translateX(20px); opacity: 0; } }
 @keyframes fadeOut { to { opacity: 0; transform: translateX(8px); } }
 
-/* ── Config bar ── */
-.config-bar {
-  display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: 8px; padding: 9px 14px; font-size: .8rem; box-shadow: var(--shadow);
-}
-.config-bar label { color: var(--muted); white-space: nowrap; }
-.config-bar input { flex: 1; height: 28px; font-size: .8rem; }
-.config-bar .btn { height: 28px; padding: 0 12px; font-size: .76rem; }
 
 svg { display: block; }

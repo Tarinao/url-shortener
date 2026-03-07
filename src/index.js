@@ -19,7 +19,7 @@ api.post('/shorten', async (req, res) => {
     return res.status(400).json({ error: 'Invalid URL' });
   }
 
-  const code = (req.body.customCode || nanoid(6)).toLowerCase();
+  const code = nanoid(6);
   await redis.set(code, url);
 
   return res.status(200).json({ code, short: `/${code}` });
@@ -28,14 +28,6 @@ api.post('/shorten', async (req, res) => {
 api.get('/urls', async (req, res) => {
   const entries = await redis.list();
   return res.status(200).json(entries);
-});
-
-api.patch('/:code/toggle', async (req, res) => {
-  const enabled = await redis.toggle(req.params.code);
-  if (enabled === null) {
-    return res.status(404).json({ error: 'Not found' });
-  }
-  return res.status(200).json({ code: req.params.code, enabled });
 });
 
 api.delete('/:code', async (req, res) => {
@@ -55,14 +47,12 @@ app.use('/ui', express.static(path.join(__dirname, '../www')));
 
 // short URL redirect — must be last
 app.get('/:code', async (req, res) => {
-  const code = req.params.code;
-  const url = await redis.get(code);
+  const url = await redis.get(req.params.code);
 
   if (!url) {
     return res.status(404).json({ error: 'Not found' });
   }
 
-  redis.incrementClick(code);
   return res.redirect(302, url);
 });
 
