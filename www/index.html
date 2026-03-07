@@ -8,20 +8,20 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0f1117;
-      --surface: #1a1d27;
-      --surface2: #22263a;
-      --border: #2e3350;
-      --accent: #6c63ff;
-      --accent-hover: #5a52e0;
-      --accent-dim: rgba(108,99,255,.15);
-      --danger: #ff4d6d;
-      --danger-dim: rgba(255,77,109,.12);
-      --success: #00d084;
-      --text: #e8eaf0;
-      --muted: #7b82a0;
+      --bg: #f5f6fa;
+      --surface: #ffffff;
+      --surface2: #f0f1f7;
+      --border: #e2e4ef;
+      --accent: #4f46e5;
+      --accent-hover: #4338ca;
+      --accent-dim: rgba(79,70,229,.08);
+      --danger: #e53e3e;
+      --danger-dim: rgba(229,62,62,.08);
+      --success: #0d9f6e;
+      --text: #1a1d2e;
+      --muted: #6b7280;
       --radius: 10px;
-      --shadow: 0 4px 24px rgba(0,0,0,.4);
+      --shadow: 0 1px 4px rgba(0,0,0,.07), 0 4px 16px rgba(0,0,0,.05);
     }
 
     body {
@@ -40,168 +40,215 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 60px;
+      height: 56px;
       position: sticky;
       top: 0;
       z-index: 100;
     }
-    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.1rem; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1rem; color: var(--text); }
     .logo-icon {
-      width: 32px; height: 32px; border-radius: 8px;
-      background: var(--accent); display: grid; place-items: center; font-size: 16px;
+      width: 30px; height: 30px; border-radius: 8px;
+      background: var(--accent); display: grid; place-items: center;
     }
-    .api-status { display: flex; align-items: center; gap: 8px; font-size: .82rem; color: var(--muted); }
-    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); transition: background .3s; }
-    .dot.online { background: var(--success); box-shadow: 0 0 6px var(--success); }
+    .api-status { display: flex; align-items: center; gap: 8px; font-size: .8rem; color: var(--muted); }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: #d1d5db; transition: background .3s; }
+    .dot.online { background: var(--success); }
 
     /* ── Layout ── */
-    main { max-width: 820px; margin: 40px auto; padding: 0 20px; }
+    main { max-width: 800px; margin: 36px auto; padding: 0 20px; }
 
     /* ── Card ── */
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 24px;
+      padding: 22px 24px;
       box-shadow: var(--shadow);
     }
-    .card + .card { margin-top: 24px; }
+    .card + .card { margin-top: 20px; }
     .card-title {
-      font-size: .75rem; font-weight: 700; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--muted); margin-bottom: 18px;
+      font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 16px;
     }
 
     /* ── Form ── */
     .form-row { display: flex; gap: 10px; flex-wrap: wrap; }
-    .form-group { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 200px; }
-    label { font-size: .82rem; color: var(--muted); font-weight: 500; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; flex: 1; min-width: 180px; }
+    label { font-size: .8rem; color: var(--muted); font-weight: 500; }
     input[type="text"], input[type="url"] {
       background: var(--bg);
       border: 1px solid var(--border);
       border-radius: 8px;
       color: var(--text);
-      font-size: .9rem;
-      height: 42px;
-      padding: 0 14px;
+      font-size: .88rem;
+      height: 40px;
+      padding: 0 12px;
       outline: none;
-      transition: border-color .2s, box-shadow .2s;
+      transition: border-color .15s, box-shadow .15s;
       width: 100%;
     }
-    input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
-    input::placeholder { color: var(--muted); }
+    input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); background: #fff; }
+    input::placeholder { color: #b0b7c3; }
+    input:disabled { opacity: .5; cursor: not-allowed; }
 
     /* ── Buttons ── */
     .btn {
       align-items: center; border: none; border-radius: 8px; cursor: pointer;
-      display: inline-flex; font-size: .88rem; font-weight: 600; gap: 7px;
-      height: 42px; padding: 0 18px; transition: all .18s; white-space: nowrap;
+      display: inline-flex; font-size: .85rem; font-weight: 600; gap: 6px;
+      height: 40px; padding: 0 16px; transition: all .15s; white-space: nowrap;
     }
     .btn-primary { background: var(--accent); color: #fff; }
-    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
-    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:hover { background: var(--accent-hover); }
     .btn-ghost {
       background: transparent; border: 1px solid var(--border); color: var(--muted);
     }
     .btn-ghost:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
     .btn-danger { background: var(--danger-dim); border: 1px solid transparent; color: var(--danger); }
     .btn-danger:hover { background: var(--danger); color: #fff; }
+    .btn-icon {
+      background: transparent; border: 1px solid var(--border); color: var(--muted);
+      border-radius: 7px; cursor: pointer; height: 30px; width: 30px; padding: 0;
+      display: grid; place-items: center; transition: all .15s; flex-shrink: 0;
+    }
+    .btn-icon:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+    .btn-icon.danger:hover { border-color: var(--danger); color: var(--danger); background: var(--danger-dim); }
     .btn-sm { height: 32px; padding: 0 12px; font-size: .8rem; }
-    .btn:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+    .btn:disabled { opacity: .45; cursor: not-allowed; }
 
-    .form-actions { display: flex; align-items: flex-end; gap: 10px; }
-    .form-actions .btn { flex-shrink: 0; }
+    .form-actions { display: flex; align-items: flex-end; }
 
     /* ── Table ── */
-    .table-wrap { overflow-x: auto; margin-top: 4px; }
-    table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: .86rem; }
     th {
-      text-align: left; font-size: .72rem; font-weight: 700;
+      text-align: left; font-size: .7rem; font-weight: 700;
       letter-spacing: .08em; text-transform: uppercase;
       color: var(--muted); padding: 0 12px 10px; border-bottom: 1px solid var(--border);
     }
-    td { padding: 13px 12px; border-bottom: 1px solid rgba(46,51,80,.5); vertical-align: middle; }
+    td { padding: 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
     tr:last-child td { border-bottom: none; }
     tr:hover td { background: var(--surface2); }
 
-    .code-pill {
-      background: var(--accent-dim); border: 1px solid rgba(108,99,255,.3);
-      border-radius: 6px; color: var(--accent); font-family: monospace;
-      font-size: .82rem; font-weight: 700; padding: 3px 10px;
-      display: inline-block;
-    }
     .url-cell { max-width: 260px; }
     .url-text {
       overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-      color: var(--muted); font-size: .83rem; display: block; max-width: 240px;
+      color: var(--muted); font-size: .82rem; display: block; max-width: 240px;
     }
-    .actions { display: flex; gap: 6px; justify-content: flex-end; }
+    .short-link {
+      color: var(--accent); font-size: .82rem; font-family: monospace;
+      text-decoration: none; font-weight: 600;
+    }
+    .short-link:hover { text-decoration: underline; }
+    .actions { display: flex; gap: 5px; justify-content: flex-end; }
 
     /* ── Empty state ── */
-    .empty {
-      text-align: center; padding: 48px 20px; color: var(--muted);
-    }
-    .empty-icon { font-size: 2.5rem; margin-bottom: 12px; opacity: .4; }
-    .empty p { font-size: .88rem; }
+    .empty { text-align: center; padding: 48px 20px; color: var(--muted); }
+    .empty-icon { margin-bottom: 12px; opacity: .3; }
+    .empty p { font-size: .86rem; }
 
     /* ── Modal ── */
     .overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,.7);
+      position: fixed; inset: 0; background: rgba(15,17,30,.35);
       display: flex; align-items: center; justify-content: center;
       z-index: 200; opacity: 0; pointer-events: none; transition: opacity .2s;
     }
     .overlay.active { opacity: 1; pointer-events: all; }
     .modal {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: 14px; padding: 28px; width: 100%; max-width: 460px;
-      margin: 20px; box-shadow: var(--shadow);
-      transform: translateY(10px); transition: transform .2s;
+      border-radius: 14px; padding: 26px; width: 100%; max-width: 440px;
+      margin: 20px; box-shadow: 0 8px 40px rgba(0,0,0,.12);
+      transform: translateY(8px); transition: transform .2s;
     }
     .overlay.active .modal { transform: translateY(0); }
-    .modal-title { font-size: 1rem; font-weight: 700; margin-bottom: 20px; }
+    .modal-title { font-size: .95rem; font-weight: 700; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
     .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
 
     /* ── Toast ── */
     #toast-container {
-      position: fixed; bottom: 24px; right: 24px;
-      display: flex; flex-direction: column; gap: 10px; z-index: 999;
+      position: fixed; bottom: 20px; right: 20px;
+      display: flex; flex-direction: column; gap: 8px; z-index: 999;
     }
     .toast {
-      align-items: center; background: var(--surface2); border: 1px solid var(--border);
+      align-items: center; background: var(--surface); border: 1px solid var(--border);
       border-radius: 10px; box-shadow: var(--shadow); color: var(--text);
-      display: flex; font-size: .85rem; gap: 10px; padding: 12px 16px;
-      animation: slideIn .25s ease; min-width: 240px;
+      display: flex; font-size: .84rem; gap: 10px; padding: 11px 15px;
+      animation: slideIn .2s ease; min-width: 220px;
     }
-    .toast.error { border-color: var(--danger); }
-    .toast.success { border-color: var(--success); }
-    .toast-icon { font-size: 1rem; flex-shrink: 0; }
-    @keyframes slideIn { from { transform: translateX(30px); opacity: 0; } }
-    @keyframes fadeOut { to { opacity: 0; transform: translateX(10px); } }
+    .toast.error { border-left: 3px solid var(--danger); }
+    .toast.success { border-left: 3px solid var(--success); }
+    @keyframes slideIn { from { transform: translateX(20px); opacity: 0; } }
+    @keyframes fadeOut { to { opacity: 0; transform: translateX(8px); } }
 
-    /* ── API config bar ── */
+    /* ── Config bar ── */
     .config-bar {
-      display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
-      background: var(--surface2); border: 1px solid var(--border);
-      border-radius: 8px; padding: 10px 14px; font-size: .82rem;
+      display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px; padding: 9px 14px; font-size: .8rem; box-shadow: var(--shadow);
     }
     .config-bar label { color: var(--muted); white-space: nowrap; }
-    .config-bar input { flex: 1; height: 30px; font-size: .82rem; }
-    .config-bar .btn { height: 30px; padding: 0 12px; font-size: .78rem; }
+    .config-bar input { flex: 1; height: 28px; font-size: .8rem; }
+    .config-bar .btn { height: 28px; padding: 0 12px; font-size: .76rem; }
 
     /* ── Stats ── */
-    .stats { display: flex; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+    .stats { display: flex; gap: 14px; margin-bottom: 18px; flex-wrap: wrap; }
     .stat {
-      flex: 1; min-width: 120px; background: var(--surface2);
+      flex: 1; min-width: 110px; background: var(--surface);
       border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px;
+      box-shadow: var(--shadow);
     }
-    .stat-value { font-size: 1.6rem; font-weight: 800; color: var(--accent); }
-    .stat-label { font-size: .75rem; color: var(--muted); margin-top: 2px; }
+    .stat-value { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
+    .stat-label { font-size: .72rem; color: var(--muted); margin-top: 2px; }
+
+    /* ── SVG icons ── */
+    svg { display: block; }
   </style>
 </head>
 <body>
 
+<!-- SVG icon sprite -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+  </symbol>
+  <symbol id="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="9" y="9" width="13" height="13" rx="2"/>
+    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+  </symbol>
+  <symbol id="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+    <polyline points="15 3 21 3 21 9"/>
+    <line x1="10" y1="14" x2="21" y2="3"/>
+  </symbol>
+  <symbol id="icon-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+  </symbol>
+  <symbol id="icon-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="3 6 5 6 21 6"/>
+    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+    <path d="M10 11v6M14 11v6"/>
+    <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+  </symbol>
+  <symbol id="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+    <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+  </symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="20 6 9 17 4 12"/>
+  </symbol>
+  <symbol id="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+  </symbol>
+  <symbol id="icon-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+  </symbol>
+</svg>
+
 <header>
   <div class="logo">
-    <div class="logo-icon">🔗</div>
+    <div class="logo-icon">
+      <svg width="16" height="16" style="color:#fff"><use href="#icon-link"/></svg>
+    </div>
     URL Shortener
   </div>
   <div class="api-status">
@@ -215,7 +262,7 @@
   <!-- API Config -->
   <div class="config-bar">
     <label>API Base URL</label>
-    <input type="text" id="api-base" value="http://localhost:3000" placeholder="http://localhost:3000" />
+    <input type="text" id="api-base" value="" placeholder="http://localhost:3000" />
     <button class="btn btn-ghost" onclick="checkHealth()">Test</button>
   </div>
 
@@ -244,12 +291,13 @@
         <input type="url" id="input-url" placeholder="https://example.com/very/long/path" />
       </div>
       <div class="form-group">
-        <label for="input-code">Custom Code <span style="color:var(--muted);font-weight:400">(optional)</span></label>
+        <label for="input-code">Custom Code <span style="font-weight:400">(optional)</span></label>
         <input type="text" id="input-code" placeholder="my-link" maxlength="32" />
       </div>
       <div class="form-actions">
         <button class="btn btn-primary" id="btn-create" onclick="createURL()">
-          <span>＋</span> Shorten
+          <svg width="14" height="14"><use href="#icon-plus"/></svg>
+          Shorten
         </button>
       </div>
     </div>
@@ -262,7 +310,6 @@
       <table id="url-table">
         <thead>
           <tr>
-            <th>Code</th>
             <th>Destination URL</th>
             <th>Short Link</th>
             <th>Created</th>
@@ -272,7 +319,9 @@
         <tbody id="url-tbody"></tbody>
       </table>
       <div class="empty" id="empty-state" style="display:none">
-        <div class="empty-icon">🔗</div>
+        <div class="empty-icon">
+          <svg width="40" height="40" style="margin:0 auto"><use href="#icon-link"/></svg>
+        </div>
         <p>No URLs yet. Create your first short link above.</p>
       </div>
     </div>
@@ -283,21 +332,25 @@
 <!-- Edit Modal -->
 <div class="overlay" id="edit-modal">
   <div class="modal">
-    <div class="modal-title">✏️ Update Destination URL</div>
+    <div class="modal-title">
+      <svg width="16" height="16"><use href="#icon-edit"/></svg>
+      Update Destination URL
+    </div>
     <div class="form-group">
       <label>Code</label>
-      <input type="text" id="edit-code" disabled style="opacity:.6;cursor:not-allowed" />
+      <input type="text" id="edit-code" disabled />
     </div>
-    <div class="form-group" style="margin-top:14px">
+    <div class="form-group" style="margin-top:12px">
       <label>New Destination URL</label>
       <input type="url" id="edit-url" placeholder="https://new-destination.com" />
     </div>
-    <div style="font-size:.78rem;color:var(--muted);margin-top:10px">
-      ℹ️ Re-posts to API with the same code — overwrites existing Redis entry.
+    <div style="font-size:.76rem;color:var(--muted);margin-top:10px;display:flex;gap:6px;align-items:flex-start">
+      <svg width="13" height="13" style="flex-shrink:0;margin-top:1px"><use href="#icon-alert"/></svg>
+      Re-posts to API with the same code — overwrites existing Redis entry.
     </div>
     <div class="modal-actions">
-      <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
-      <button class="btn btn-primary" onclick="updateURL()">Update</button>
+      <button class="btn btn-ghost btn-sm" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary btn-sm" onclick="updateURL()">Update</button>
     </div>
   </div>
 </div>
@@ -305,26 +358,28 @@
 <!-- Delete Confirm Modal -->
 <div class="overlay" id="delete-modal">
   <div class="modal">
-    <div class="modal-title">🗑️ Delete Short URL</div>
-    <p style="color:var(--muted);font-size:.88rem;line-height:1.6">
-      Remove <span id="delete-code-label" style="color:var(--accent);font-weight:700"></span>
-      from this list?<br>
-      <span style="color:var(--danger);font-size:.8rem">
-        ⚠️ Note: The API has no DELETE endpoint — the code may still resolve in Redis until it expires.
-      </span>
+    <div class="modal-title">
+      <svg width="16" height="16"><use href="#icon-trash"/></svg>
+      Delete Short URL
+    </div>
+    <p style="color:var(--muted);font-size:.86rem;line-height:1.6">
+      Remove <span id="delete-code-label" style="color:var(--accent);font-weight:700;font-family:monospace"></span> from this list?
     </p>
+    <div style="font-size:.76rem;color:var(--danger);margin-top:10px;display:flex;gap:6px;align-items:flex-start">
+      <svg width="13" height="13" style="flex-shrink:0;margin-top:1px"><use href="#icon-alert"/></svg>
+      The API has no DELETE endpoint — the code may still resolve in Redis until it expires.
+    </div>
     <div class="modal-actions">
-      <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
-      <button class="btn btn-danger" onclick="confirmDelete()">Delete</button>
+      <button class="btn btn-ghost btn-sm" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-danger btn-sm" onclick="confirmDelete()">Delete</button>
     </div>
   </div>
 </div>
 
-<!-- Toast container -->
 <div id="toast-container"></div>
 
 <script>
-  // ─── State ──────────────────────────────────────────────────────────────
+  // ─── State ───────────────────────────────────────────────────────────────
   const STORE_KEY = 'url_shortener_urls';
   let urls = JSON.parse(localStorage.getItem(STORE_KEY) || '[]');
   let pendingDeleteCode = null;
@@ -335,9 +390,11 @@
     updateStats();
   }
 
-  // ─── API ─────────────────────────────────────────────────────────────────
+  // ─── API base: auto-detect same origin when served from /ui ──────────────
   function apiBase() {
-    return document.getElementById('api-base').value.replace(/\/$/, '');
+    const stored = document.getElementById('api-base').value.trim().replace(/\/$/, '');
+    if (stored) return stored;
+    return window.location.origin;
   }
 
   async function checkHealth() {
@@ -345,9 +402,8 @@
     const txt = document.getElementById('status-text');
     try {
       const r = await fetch(`${apiBase()}/health`, { signal: AbortSignal.timeout(3000) });
-      const ok = r.ok;
-      dot.className = 'dot' + (ok ? ' online' : '');
-      txt.textContent = ok ? 'API online' : `API error (${r.status})`;
+      dot.className = 'dot' + (r.ok ? ' online' : '');
+      txt.textContent = r.ok ? 'API online' : `API error (${r.status})`;
     } catch {
       dot.className = 'dot';
       txt.textContent = 'API unreachable';
@@ -365,7 +421,6 @@
 
     const btn = document.getElementById('btn-create');
     btn.disabled = true;
-    btn.textContent = 'Creating…';
 
     try {
       const body = { url };
@@ -379,11 +434,7 @@
       });
 
       const data = await r.json();
-
-      if (!r.ok) {
-        toast(data.error || `Error ${r.status}`, 'error');
-        return;
-      }
+      if (!r.ok) { toast(data.error || `Error ${r.status}`, 'error'); return; }
 
       const entry = {
         code: data.code,
@@ -393,20 +444,18 @@
         createdAt: new Date().toISOString(),
       };
 
-      // Update existing or prepend
       const idx = urls.findIndex(u => u.code === entry.code);
       if (idx >= 0) urls[idx] = entry;
       else urls.unshift(entry);
 
       save();
-      toast(`Short URL /${data.code} created!`, 'success');
+      toast(`/${data.code} created`, 'success');
       urlInput.value = '';
       codeInput.value = '';
-    } catch (e) {
+    } catch {
       toast('Could not reach API. Is the server running?', 'error');
     } finally {
       btn.disabled = false;
-      btn.innerHTML = '<span>＋</span> Shorten';
     }
   }
 
@@ -437,14 +486,11 @@
       if (!r.ok) { toast(data.error || `Error ${r.status}`, 'error'); return; }
 
       const idx = urls.findIndex(u => u.code === code);
-      if (idx >= 0) {
-        urls[idx].url = newUrl;
-        urls[idx].updatedAt = new Date().toISOString();
-      }
+      if (idx >= 0) { urls[idx].url = newUrl; urls[idx].updatedAt = new Date().toISOString(); }
 
       save();
       closeModal();
-      toast(`/${code} updated successfully`, 'success');
+      toast(`/${code} updated`, 'success');
     } catch {
       toast('Could not reach API', 'error');
     }
@@ -461,7 +507,7 @@
     if (!pendingDeleteCode) return;
     urls = urls.filter(u => u.code !== pendingDeleteCode);
     save();
-    toast(`/${pendingDeleteCode} removed from list`, 'success');
+    toast(`/${pendingDeleteCode} removed`, 'success');
     pendingDeleteCode = null;
     closeModal();
   }
@@ -470,16 +516,11 @@
   function closeModal() {
     document.querySelectorAll('.overlay').forEach(o => o.classList.remove('active'));
   }
-
   document.querySelectorAll('.overlay').forEach(o => {
     o.addEventListener('click', e => { if (e.target === o) closeModal(); });
   });
-
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeModal();
-    if (e.key === 'Enter' && !document.querySelector('.overlay.active')) {
-      if (document.activeElement.closest('main')) createURL();
-    }
   });
 
   // ─── Render ──────────────────────────────────────────────────────────────
@@ -495,35 +536,35 @@
     empty.style.display = 'none';
 
     tbody.innerHTML = urls.map(entry => {
-      const base = apiBase();
-      const full = base + entry.short;
+      const full = apiBase() + entry.short;
       const date = new Date(entry.updatedAt || entry.createdAt);
       const dateStr = date.toLocaleDateString('en-GB', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit' });
 
-      return `
-        <tr>
-          <td>
-            <span class="code-pill">${esc(entry.code)}</span>
-            ${entry.customCode ? '<span style="font-size:.7rem;color:var(--muted);margin-left:4px">custom</span>' : ''}
-          </td>
-          <td class="url-cell">
-            <a href="${esc(entry.url)}" target="_blank" rel="noopener" class="url-text" title="${esc(entry.url)}">${esc(entry.url)}</a>
-          </td>
-          <td>
-            <a href="${esc(full)}" target="_blank" rel="noopener" style="color:var(--accent);font-size:.83rem;text-decoration:none;">
-              ${esc(entry.short)}
-            </a>
-          </td>
-          <td style="color:var(--muted);font-size:.8rem;white-space:nowrap">${dateStr}</td>
-          <td>
-            <div class="actions">
-              <button class="btn btn-ghost btn-sm" title="Copy short URL" onclick="copyURL('${esc(full)}')">📋</button>
-              <button class="btn btn-ghost btn-sm" title="Open short link" onclick="window.open('${esc(full)}','_blank')">↗</button>
-              <button class="btn btn-ghost btn-sm" title="Edit" onclick="openEditModal('${esc(entry.code)}')">✏️</button>
-              <button class="btn btn-danger btn-sm" title="Delete" onclick="openDeleteModal('${esc(entry.code)}')">🗑</button>
-            </div>
-          </td>
-        </tr>`;
+      return `<tr>
+        <td class="url-cell">
+          <a href="${esc(entry.url)}" target="_blank" rel="noopener" class="url-text" title="${esc(entry.url)}">${esc(entry.url)}</a>
+        </td>
+        <td>
+          <a href="${esc(full)}" target="_blank" rel="noopener" class="short-link">${esc(entry.short)}</a>
+        </td>
+        <td style="color:var(--muted);font-size:.78rem;white-space:nowrap">${dateStr}</td>
+        <td>
+          <div class="actions">
+            <button class="btn-icon" title="Copy short URL" onclick="copyURL('${esc(full)}')">
+              <svg width="13" height="13"><use href="#icon-copy"/></svg>
+            </button>
+            <button class="btn-icon" title="Open" onclick="window.open('${esc(full)}','_blank')">
+              <svg width="13" height="13"><use href="#icon-open"/></svg>
+            </button>
+            <button class="btn-icon" title="Edit" onclick="openEditModal('${esc(entry.code)}')">
+              <svg width="13" height="13"><use href="#icon-edit"/></svg>
+            </button>
+            <button class="btn-icon danger" title="Delete" onclick="openDeleteModal('${esc(entry.code)}')">
+              <svg width="13" height="13"><use href="#icon-trash"/></svg>
+            </button>
+          </div>
+        </td>
+      </tr>`;
     }).join('');
   }
 
@@ -544,36 +585,38 @@
   async function copyURL(url) {
     try {
       await navigator.clipboard.writeText(url);
-      toast('Copied to clipboard!', 'success');
+      toast('Copied!', 'success');
     } catch {
-      toast('Copy failed — try manually', 'error');
+      toast('Copy failed', 'error');
     }
   }
 
   function toast(msg, type = 'info') {
-    const icons = { success: '✅', error: '❌', info: 'ℹ️' };
+    const icons = {
+      success: '<svg width="14" height="14" style="color:var(--success)"><use href="#icon-check"/></svg>',
+      error:   '<svg width="14" height="14" style="color:var(--danger)"><use href="#icon-x"/></svg>',
+      info:    '<svg width="14" height="14" style="color:var(--muted)"><use href="#icon-alert"/></svg>',
+    };
     const el = document.createElement('div');
     el.className = `toast ${type}`;
-    el.innerHTML = `<span class="toast-icon">${icons[type]}</span><span>${msg}</span>`;
+    el.innerHTML = `${icons[type]}<span>${msg}</span>`;
     document.getElementById('toast-container').appendChild(el);
     setTimeout(() => {
-      el.style.animation = 'fadeOut .3s ease forwards';
+      el.style.animation = 'fadeOut .25s ease forwards';
       el.addEventListener('animationend', () => el.remove());
-    }, 3200);
+    }, 3000);
   }
 
-  // ─── Init ─────────────────────────────────────────────────────────────────
+  // ─── Init ────────────────────────────────────────────────────────────────
   render();
   updateStats();
   checkHealth();
   setInterval(checkHealth, 30000);
 
-  // Allow pressing Enter in the URL input
-  document.getElementById('input-url').addEventListener('keydown', e => {
-    if (e.key === 'Enter') createURL();
-  });
-  document.getElementById('input-code').addEventListener('keydown', e => {
-    if (e.key === 'Enter') createURL();
+  ['input-url','input-code'].forEach(id => {
+    document.getElementById(id).addEventListener('keydown', e => {
+      if (e.key === 'Enter') createURL();
+    });
   });
 </script>
 </body>
