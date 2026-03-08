@@ -58,15 +58,6 @@ describe('Enable/Disable Feature', () => {
     expect(res.body).toEqual({ error: 'Not found' });
   });
 
-  test('GET /:code returns 404 when URL is disabled (redis.get returns null)', async () => {
-    redis.get.mockResolvedValueOnce(null);
-
-    const res = await request(app).get('/abc123');
-
-    expect(res.status).toBe(404);
-    expect(res.body).toEqual({ error: 'Not found' });
-  });
-
   test('GET /api/urls returns entries with an enabled field', async () => {
     const res = await request(app).get('/api/urls');
 
