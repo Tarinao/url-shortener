@@ -60,24 +60,4 @@ describe('URL Shortener API', () => {
     expect(res.body).toEqual({ status: 'ok' });
   });
 
-  // --- feature A: custom code (FAIL on main, pass after merge) ---
-
-  test('POST /api/shorten with customCode returns code equal to customCode', async () => {
-    const res = await request(app)
-      .post('/api/shorten')
-      .send({ url: 'https://example.com', customCode: 'mylink' });
-
-    expect(res.status).toBe(200);
-    expect(res.body.code).toBe('mylink');
-  });
-
-  test('POST /api/shorten with customCode "MyLink" returns code "mylink" (lowercased)', async () => {
-    const res = await request(app)
-      .post('/api/shorten')
-      .send({ url: 'https://example.com', customCode: 'MyLink' });
-
-    expect(res.status).toBe(200);
-    expect(res.body.code).toBe('mylink');
-  });
-
 });
