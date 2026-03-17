@@ -1,9 +1,7 @@
 const Redis = require('ioredis');
 
 const client = new Redis({
-  host: process.env.REDIS_HOST || 'localhost',
-  port: 6379,
-});
+host: process.env.REDIS_HOST || 'redis',});
 
 const DEFAULT_TTL = 604800; // 7 days
 const CODES_SET = '__codes__';
