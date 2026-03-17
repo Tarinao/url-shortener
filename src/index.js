@@ -46,6 +46,7 @@ api.post('/shorten', async (req, res) => {
   }
 
   const code = randomCode(6).toLowerCase();
+
   await redis.set(code, url);
 
   return res.status(200).json({ code, short: `/${code}` });
@@ -54,6 +55,12 @@ api.post('/shorten', async (req, res) => {
 api.get('/urls', async (req, res) => {
   const entries = await redis.list();
   return res.status(200).json(entries);
+});
+
+api.patch('/:code/toggle', async (req, res) => {
+  const enabled = await redis.toggle(req.params.code);
+  if (enabled === null) return res.status(404).json({ error: 'Not found' });
+  return res.status(200).json({ code: req.params.code, enabled });
 });
 
 api.delete('/:code', async (req, res) => {
