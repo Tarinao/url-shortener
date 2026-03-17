@@ -38,6 +38,21 @@ const redis = {
     return parsed.enabled;
   },
 
+  async incrementClick(code) {
+    const raw = await client.get(code);
+    if (!raw) return;
+    try {
+      const parsed = JSON.parse(raw);
+      parsed.clicks = (parsed.clicks || 0) + 1;
+      const ttl = await client.ttl(code);
+      if (ttl > 0) {
+        await client.set(code, JSON.stringify(parsed), 'EX', ttl);
+      } else {
+        await client.set(code, JSON.stringify(parsed));
+      }
+    } catch { /* ignore */ }
+  },
+
   async list() {
     const codes = await client.smembers(CODES_SET);
     if (!codes.length) return [];
@@ -49,10 +64,17 @@ const redis = {
         return null;
       }
       try {
-        const { url, createdAt, enabled } = JSON.parse(raw);
-        return { code, url, createdAt, enabled: enabled !== false };
+const { url, createdAt, enabled, clicks } = JSON.parse(raw);
+
+return {
+  code,
+  url,
+  createdAt,
+  enabled: enabled !== false,
+  clicks: clicks || 0
+};
       } catch {
-        return { code, url: raw, createdAt: null };
+        return { code, url: raw, createdAt: null, clicks: 0 };
       }
     }));
 
