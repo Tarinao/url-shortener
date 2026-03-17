@@ -45,8 +45,12 @@ api.post('/shorten', async (req, res) => {
     return res.status(400).json({ error: 'Invalid URL' });
   }
 
+<<<<<<< HEAD
   const code = randomCode(6).toLowerCase();
 
+=======
+  const code = (req.body.customCode || randomCode(6)).toLowerCase();
+>>>>>>> feat/customcode
   await redis.set(code, url);
 
   return res.status(200).json({ code, short: `/${code}` });
